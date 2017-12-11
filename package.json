@@ -1,0 +1,29 @@
+{
+  "name": "vapid-cli",
+  "version": "0.1.0",
+  "description": "CLI for Vapid, a template-driven CMS.",
+  "author": "Scott Robbin <scott@vapid.com>",
+  "private": true,
+  "bin": {
+    "vapid-cli": "./bin/cli.js"
+  },
+  "scripts": {
+    "build": "pkg bin/vapid -c package.json -o dist/vapid",
+    "test": "mocha"
+  },
+  "pkg": {
+    "targets": [
+      "node8-alpine-x64",
+      "node8-linux-x64",
+      "node8-macos-x64",
+      "node8-win-x64"
+    ]
+  },
+  "dependencies": {
+    "commander": "^2.12.2"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  }
+}
