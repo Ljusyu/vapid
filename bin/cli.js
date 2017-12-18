@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 
+const path = require('path')
 const program = require('commander')
 
 const pjson = require('../package.json')
+const Server = require('../lib/server')
 const Site = require('../lib/site')
 const Logger = require('../lib/logger')
 
@@ -21,7 +23,7 @@ program
         `  ${pjson.name} server ${target}`
       ])
     } catch (err) {
-      Logger.error(err)
+      Logger.error(err.message)
     }
   })
 
@@ -30,13 +32,19 @@ program
   .command('server')
   .description('start the development server')
   .action((target) => {
-    // let server = new Server(target)
-    
-    Logger.info(`Starting the development server...`)
-    Logger.extra([
-      'View your site at http://localhost:4567',
-      'Ctrl + C to quit'
-    ])
+    try {
+      let site = new Site(target)
+      let server = new Server(site)
+      
+      Logger.info(`Starting the development server...`)
+      server.start()
+      Logger.extra([
+        `View your site at http://localhost:${server.port}`,
+        'Ctrl + C to quit'
+      ]);
+    } catch (err) {
+      Logger.error(err.message)
+    }
   })
 
 // DEPLOY
@@ -53,6 +61,14 @@ program
   .description('shows the version number')
   .action((target) => {
     Logger.extra(`Vapid ${program.version()}`)
+  })
+
+// CATCH-ALL
+program
+  .command('*', { noHelp: true })
+  .action(() => {
+    Logger.error(`Command "${process.argv[2]}" not found.`)
+    program.help()
   })
 
 if (process.argv.slice(2).length) {
