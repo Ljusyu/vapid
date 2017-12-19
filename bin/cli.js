@@ -8,52 +8,54 @@ const Server = require('../lib/server')
 const Site = require('../lib/site')
 const Logger = require('../lib/logger')
 
+function actionHandler(fn) {
+  return async (target) => {
+    let sitePath = typeof target == 'string' ? target : '.'
+    let site = new Site(sitePath)
+
+    try {
+      fn(site)
+    } catch (err) {
+      Logger.error(err);
+    }
+  }
+}
+
 // NEW
 program
   .command('new <target>')
   .description('create a new project')
-  .action((target) => {
-    let site = new Site(target)
-
-    try {
-      site.localInitialize()
-      Logger.info(`Project created.`)
-      Logger.extra([
-        'To start the development server now, run:',
-        `  ${pjson.name} server ${target}`
-      ])
-    } catch (err) {
-      Logger.error(err.message)
-    }
-  })
+  .action(actionHandler((site) => {
+    site.localInitialize()
+    Logger.info(`Project created.`)
+    Logger.extra([
+      'To start the development server now, run:',
+      `  ${pjson.name} server ${target}`
+    ])
+  }))
 
 // SERVER
 program
   .command('server')
   .description('start the development server')
-  .action((target) => {
-    try {
-      let site = new Site(target)
-      let server = new Server(site)
-      
-      Logger.info(`Starting the development server...`)
-      server.start()
-      Logger.extra([
-        `View your site at http://localhost:${server.port}`,
-        'Ctrl + C to quit'
-      ]);
-    } catch (err) {
-      Logger.error(err.message)
-    }
-  })
+  .action(actionHandler((site) => {
+    let server = new Server(site)
+    
+    Logger.info(`Starting the development server...`)
+    server.start()
+    Logger.extra([
+      `View your site at http://localhost:${server.port}`,
+      'Ctrl + C to quit'
+    ]);
+  }))
 
 // DEPLOY
 program
   .command('deploy')
   .description('deploy to Vapid\'s hosting service')
-  .action((target) => {
+  .action(actionHandler((site) => {
     Logger.info(`DEPLOY`)
-  })
+  }))
 
 // VERSION
 program
