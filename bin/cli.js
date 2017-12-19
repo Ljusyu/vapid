@@ -9,7 +9,7 @@ const Site = require('../lib/site')
 const Logger = require('../lib/logger')
 
 function actionHandler(fn) {
-  return async (target) => {
+  return (target) => {
     let sitePath = typeof target == 'string' ? target : '.'
     let site = new Site(sitePath)
 
@@ -25,7 +25,7 @@ function actionHandler(fn) {
 program
   .command('new <target>')
   .description('create a new project')
-  .action(actionHandler((site) => {
+  .action(actionHandler(site => {
     site.localInitialize()
     Logger.info(`Project created.`)
     Logger.extra([
@@ -38,7 +38,7 @@ program
 program
   .command('server')
   .description('start the development server')
-  .action(actionHandler((site) => {
+  .action(actionHandler(site => {
     let server = new Server(site)
     
     Logger.info(`Starting the development server...`)
@@ -53,7 +53,7 @@ program
 program
   .command('deploy')
   .description('deploy to Vapid\'s hosting service')
-  .action(actionHandler((site) => {
+  .action(actionHandler(site => {
     Logger.info(`DEPLOY`)
   }))
 
@@ -61,7 +61,7 @@ program
 program
   .command('version')
   .description('shows the version number')
-  .action((target) => {
+  .action(target => {
     Logger.extra(`Vapid ${program.version()}`)
   })
 
