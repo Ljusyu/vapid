@@ -40,7 +40,7 @@ program
   .description('start the development server')
   .action(actionHandler(site => {
     let server = new Server(site)
-    
+     
     Logger.info(`Starting the development server...`)
     server.start()
     Logger.extra([
