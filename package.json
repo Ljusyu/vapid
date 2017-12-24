@@ -24,9 +24,10 @@
     "commander": "^2.12.2",
     "consolidate": "^0.15.0",
     "ejs": "^2.5.7",
-    "express": "^4.16.2",
     "get-paths": "^0.0.2",
-    "morgan": "^1.9.0"
+    "koa": "^2.4.1",
+    "koa-log": "^2.1.0",
+    "koa-static": "^4.0.2"
   },
   "devDependencies": {
     "chai": "^4.1.2",
