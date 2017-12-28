@@ -27,11 +27,13 @@
     "get-paths": "^0.0.2",
     "koa": "^2.4.1",
     "koa-log": "^2.1.0",
+    "koa-router": "^7.3.0",
     "koa-static": "^4.0.2"
   },
   "devDependencies": {
     "chai": "^4.1.2",
     "livereload": "^0.6.3",
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "nedb": "^1.8.0"
   }
 }
