@@ -30,7 +30,7 @@ program
     Logger.info(`Project created.`)
     Logger.extra([
       'To start the development server now, run:',
-      `  ${pjson.name} server ${target}`
+      `  ${pjson.name} server ${site.localPath}`
     ])
   }))
 

@@ -26,9 +26,13 @@
     "ejs": "^2.5.7",
     "get-paths": "^0.0.2",
     "koa": "^2.4.1",
+    "koa-bodyparser": "^4.2.0",
     "koa-log": "^2.1.0",
+    "koa-passport": "^4.0.1",
     "koa-router": "^7.3.0",
-    "koa-static": "^4.0.2"
+    "koa-session": "^5.5.1",
+    "koa-static": "^4.0.2",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
