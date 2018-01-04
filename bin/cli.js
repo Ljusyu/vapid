@@ -37,11 +37,13 @@ program
 // SERVER
 program
   .command('server')
-  .description('start the development server')
+  .description('start the server')
   .action(actionHandler(site => {
-    let server = new Server(site)
+    // TODO: Options for livereload, port, bind, etc?
+    const env = process.env.NODE_ENV || 'development'
+    const server = new Server(site, { livereload: env == 'development' })
      
-    Logger.info(`Starting the development server...`)
+    Logger.info(`Starting the ${env} server...`)
     server.start()
     Logger.extra([
       `View your site at http://localhost:${server.port}`,

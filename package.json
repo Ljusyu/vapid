@@ -28,16 +28,12 @@
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
     "koa-log": "^2.1.0",
-    "koa-passport": "^4.0.1",
     "koa-router": "^7.3.0",
-    "koa-session": "^5.5.1",
-    "koa-static": "^4.0.2",
-    "passport-local": "^1.0.0"
+    "koa-static": "^4.0.2"
   },
   "devDependencies": {
     "chai": "^4.1.2",
     "livereload": "^0.6.3",
-    "mocha": "^4.0.1",
-    "nedb": "^1.8.0"
+    "mocha": "^4.0.1"
   }
 }
