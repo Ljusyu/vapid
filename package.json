@@ -24,7 +24,6 @@
     "colors": "^1.1.2",
     "commander": "^2.12.2",
     "ejs": "^2.5.7",
-    "get-paths": "^0.0.2",
     "graphql": "^0.12.3",
     "graphql-tools": "^2.16.0",
     "koa": "^2.4.1",
@@ -32,12 +31,12 @@
     "koa-log": "^2.1.0",
     "koa-router": "^7.3.0",
     "koa-static": "^4.0.2",
+    "livereload": "^0.6.3",
     "sails-disk": "^0.10.10",
     "waterline": "^0.11.12"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "livereload": "^0.6.3",
     "mocha": "^4.0.1"
   }
 }
