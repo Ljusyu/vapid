@@ -26,6 +26,7 @@
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
     "koa-log": "^2.1.0",
+    "koa-mount": "^3.0.0",
     "koa-router": "^7.3.0",
     "koa-static": "^4.0.2",
     "livereload": "^0.6.3",
