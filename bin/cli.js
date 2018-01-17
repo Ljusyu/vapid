@@ -2,8 +2,11 @@
 
 const path = require('path')
 const program = require('commander')
+const repl = require('repl')
 
+const env = process.env.NODE_ENV || 'development'
 const pjson = require('../package.json')
+const Console = require('../lib/console')
 const Server = require('../lib/server')
 const Site = require('../lib/site')
 const Logger = require('../lib/logger')
@@ -40,7 +43,6 @@ program
   .description('start the server')
   .action(actionHandler(site => {
     // TODO: Options for livereload, port, bind, etc?
-    const env = process.env.NODE_ENV || 'development'
     const server = new Server(site, { livereload: env == 'development' })
      
     Logger.info(`Starting the ${env} server...`)
@@ -49,6 +51,20 @@ program
       `View your site at http://localhost:${server.port}`,
       'Ctrl + C to quit'
     ]);
+  }))
+
+// CONSOLE
+program
+  .command('console')
+  .description('start the interactive console')
+  .action(actionHandler(site => {
+    Logger.info(`Loading the ${env} environment`)
+    Logger.extra([
+      'Type .exit to quit'
+    ]);
+
+    const c = new Console(site)
+    c.start()
   }))
 
 // DEPLOY
