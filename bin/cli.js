@@ -19,7 +19,7 @@ function actionHandler(fn) {
     try {
       fn(site)
     } catch (err) {
-      Logger.error(err);
+      Logger.error(err)
     }
   }
 }
