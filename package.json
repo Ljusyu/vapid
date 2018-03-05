@@ -25,13 +25,16 @@
     "ejs": "^2.5.7",
     "koa": "^2.4.1",
     "koa-bodyparser": "^4.2.0",
+    "koa-favicon": "^2.0.0",
     "koa-log": "^2.1.0",
     "koa-mount": "^3.0.0",
     "koa-router": "^7.3.0",
     "koa-static": "^4.0.2",
+    "koa-views": "^6.1.4",
     "livereload": "^0.6.3",
     "sequelize": "^4.33.4",
-    "sqlite3": "^3.1.13"
+    "sqlite3": "^3.1.13",
+    "turbolinks": "^5.1.1"
   },
   "devDependencies": {
     "chai": "^4.1.2",

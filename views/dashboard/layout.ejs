@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vapid Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/semantic.min.css">
+  <link rel="stylesheet" href="/dashboard/assets/stylesheets/dashboard.css">
+</head>
+<body>
+  <nav class="ui sidebar inverted visible vertical menu">
+    <a href="/dashboard" class="item logo">
+      <img src="/dashboard/assets/images/logo.svg">
+    </a>
+
+    <div class="item">
+      <div class="header">Content</div>
+      <div class="menu">
+        <% groups.forEach(group => { %>
+          <a href="/dashboard/groups/<%- group.id %>" class="item"><%- group.displayName %></a>
+        <% }) %>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="header">Settings</div>
+      <div class="menu">
+        <a href="/dashboard/logout" class="item">Log out</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pusher">
+    <%- include(yield) %>
+  </main>
+</body>
+</html>

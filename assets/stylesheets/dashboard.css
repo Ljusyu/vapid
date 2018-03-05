@@ -1,0 +1,23 @@
+.pusher {
+   padding: 1.5rem 3rem 3rem 18rem;
+ }
+
+.sidebar .item:last-of-type:before {
+  display: none;
+}
+
+.logo:hover {
+  background: transparent !important;
+}
+
+  .logo img {
+    padding: 1rem 2rem;
+  }
+
+.ui.form {
+  max-width: 50rem !important;
+}
+
+  .ui.form .field > label {
+    text-transform: capitalize;
+  }
