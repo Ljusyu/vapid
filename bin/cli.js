@@ -44,6 +44,17 @@ program
     ]);
   }))
 
+// DEPLOY
+program
+  .command('deploy')
+  .description('deploy to Vapid\'s hosting service')
+  .action(actionHandler(site => {
+    vapid.log.extra([
+      `Vapid hosting is currently in private beta.`,
+      'To request access, visit https://www.vapid.com'
+    ]);
+  }))
+
 // VERSION
 program
   .command('version')
