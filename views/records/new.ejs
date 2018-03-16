@@ -1,5 +1,6 @@
-<h1 class="ui header">New <%- group.displayName %></h1>
+<h1 class="ui header"><% if (group.repeating) { %>New <% } %><%- group.displayName %></h1>
 
+<% if (group.fields) { %>
 <form class="ui form" action="<%- action %>" method="POST">
   <% for (let fieldName in group.fields) { %>
     <div class="field">
@@ -10,3 +11,7 @@
 
   <input class="ui button" type="submit" value="Save">
 </form>
+<% } else { %>
+  <p>This group has no fields.</p>
+  <p><em>TODO: Explain how to add them in template.</em></p>
+<% } %>
