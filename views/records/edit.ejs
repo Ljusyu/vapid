@@ -4,7 +4,7 @@
   <% for (let fieldName in record.group.fields) { %>
     <div class="field">
       <label><%- fieldName %></label>
-      <%- record.group.fieldInput(fieldName, record.contentFor(fieldName)) %>
+      <%- record.group.fieldInput(fieldName, record.content[fieldName]) %>
     </div>
   <% } %>
 
