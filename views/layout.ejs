@@ -3,6 +3,7 @@
 <head>
   <title>Vapid Dashboard</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/semantic.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/0.11.2/trix.css">
   <link rel="stylesheet" href="/dashboard/assets/stylesheets/dashboard.css">
 </head>
 <body>
@@ -33,5 +34,9 @@
     <%- include('flash') %>
     <%- include(yield) %>
   </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/0.11.2/trix.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.1/ace.js"></script>
+  <script src="/dashboard/assets/javascripts/dashboard.js"></script>
 </body>
 </html>
