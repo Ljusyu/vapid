@@ -3,10 +3,7 @@
 <% if (group.fields) { %>
 <form class="ui form" action="<%- action %>" method="POST">
   <% for (let fieldName in group.fields) { %>
-    <div class="field">
-      <label><%- fieldName %></label>
-      <%- group.fieldInput(fieldName) %>
-    </div>
+    <%- group.formField(fieldName) %>
   <% } %>
 
   <input class="ui button" type="submit" value="Save">

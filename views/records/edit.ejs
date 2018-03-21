@@ -2,10 +2,7 @@
 
 <form class="ui form" action="<%- action %>" method="POST">
   <% for (let fieldName in record.group.fields) { %>
-    <div class="field">
-      <label><%- fieldName %></label>
-      <%- record.group.fieldInput(fieldName, record.content[fieldName]) %>
-    </div>
+    <%- record.group.formField(fieldName, record.content[fieldName]) %>
   <% } %>
 
   <input class="ui button" type="submit" value="Update">
