@@ -14,10 +14,16 @@
     padding: 1rem 2rem;
   }
 
-.ui.form {
-  max-width: 50rem !important;
+.ui.form,
+.ui.segment,
+.ui.table {
+  max-width: 60rem !important;
 }
 
   .ui.form .field > label {
     text-transform: capitalize;
   }
+
+main > .ui.clearing.segment {
+  padding-top: 0;
+}

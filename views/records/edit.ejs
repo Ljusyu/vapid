@@ -1,9 +1,12 @@
-<h1 class="ui header"><%- record.group.displayName %></h1>
+<h1 class="ui header"><%- record.group.displayNameSingular %></h1>
 
 <form class="ui form" action="<%- action %>" method="POST">
   <% for (let fieldName in record.group.fields) { %>
     <%- record.group.formField(fieldName, record.content[fieldName]) %>
   <% } %>
 
-  <input class="ui button" type="submit" value="Update">
+  <div>
+    <a href="./delete" class="ui right floated red button">Delete</a>
+    <input class="ui left floated button" type="submit" value="Update">
+  </div>
 </form>

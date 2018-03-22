@@ -1,0 +1,18 @@
+<h1 class="ui header">Delete <%- record.group.displayNameSingular %></h1>
+
+<p>Are you use you'd like to delete this <%- record.group.displayNameSingular.toLowerCase() %>?</p>
+
+<table class="ui definition table">
+  <tbody>
+    <% record.group.tableColumns.forEach(key => { %>
+    <tr>
+      <td><%- key %></td>
+      <td><%- record.content[key.toLowerCase()] %></td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<form method="post">
+  <input type="submit" class="ui red button" value="Delete">
+</form>

@@ -1,3 +1,33 @@
-<h1 class="ui header"><%- group.displayName %></h1>
+<div class="ui vertical basic clearing segment">
+  <a href="./records/new" class="ui right floated small button">New <%- group.displayNameSingular %></a>
 
-Show all records
+  <h1 class="ui left floated header">
+    <%- group.displayName %>
+  </h1>
+</div>
+
+<table class="ui striped table">
+  <thead>
+    <tr>
+      <% group.tableColumns.forEach(key => { %>
+      <th><%- key %></th>
+      <% }) %>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% group.records.forEach(record => { %>
+    <tr>
+      <% group.tableColumns.forEach(key => { %>
+      <td><%- record.content[key.toLowerCase()] %></td>
+      <% }) %>
+      <td class="right aligned">
+        <a href="../../records/<%- record.id %>/edit">
+          <i class="ui edit icon"></i>
+          Edit
+        </a>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
