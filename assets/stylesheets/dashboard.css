@@ -1,3 +1,12 @@
+a,
+a:hover {
+  color: #F15946;
+}
+
+.ui.table a:hover {
+  text-decoration: underline;
+}
+
 .pusher {
    padding: 1.5rem 3rem 3rem 18rem;
  }

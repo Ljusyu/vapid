@@ -16,7 +16,12 @@
       <div class="header">Content</div>
       <div class="menu">
         <% groups.forEach(group => { %>
-          <a href="/dashboard/groups/<%- group.id %>" class="item"><%- group.displayName %></a>
+          <a href="/dashboard/groups/<%- group.id %>" class="item">
+            <span>
+              <i class="<%- group.repeating ? 'list' : 'file outline' %> icon"></i>
+              <%- group.displayName %>
+            </span>
+          </a>
         <% }) %>
       </div>
     </div>

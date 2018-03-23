@@ -6,7 +6,9 @@
   <% } %>
 
   <div>
-    <a href="./delete" class="ui right floated red button">Delete</a>
+    <% if (record.group.repeating) { %>
+      <a href="./delete" class="ui right floated red button">Delete</a>
+    <% } %>
     <input class="ui left floated button" type="submit" value="Update">
   </div>
 </form>
