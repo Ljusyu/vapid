@@ -1,12 +1,3 @@
-a,
-a:hover {
-  color: #F15946;
-}
-
-.ui.table a:hover {
-  text-decoration: underline;
-}
-
 .pusher {
    padding: 1.5rem 3rem 3rem 18rem;
  }
@@ -36,3 +27,26 @@ a:hover {
 main > .ui.clearing.segment {
   padding-top: 0;
 }
+
+.hidden {
+  display: none !important;
+}
+
+/* Auth */
+body.auth {
+  display: flex;
+  align-items: center;
+  background: #1b1c1d;
+  color: white;
+}
+
+  body.auth main {
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  body.auth .logo {
+    max-width: 180px;
+    margin-bottom: 2rem;
+  }
