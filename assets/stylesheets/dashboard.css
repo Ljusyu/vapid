@@ -24,6 +24,10 @@
     text-transform: capitalize;
   }
 
+  .ui.form .field > small {
+    color: #666;
+  }
+
 main > .ui.clearing.segment {
   padding-top: 0;
 }
