@@ -9,14 +9,16 @@
   <main>
     <img src="/dashboard/assets/images/logo.svg" class="logo" alt="Vapid logo">
 
+    <%- include('../flash') %>
+    
     <form class="ui form" method="post">
       <div class="field">
         <label class="hidden">Email</label>
-        <input type="text" name="email" placeholder="Email" />
+        <input type="text" name="email" placeholder="Email" autofocus>
       </div>
       <div class="field">
         <label class="hidden">Password</label>
-        <input type="password" name="password" placeholder="Password" />
+        <input type="password" name="password" placeholder="Password">
       </div>
 
       <input type="submit" class="ui fluid button" value="Sign In">
