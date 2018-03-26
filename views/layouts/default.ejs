@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Vapid Dashboard</title>
+  <title><%- title %> | Vapid Dashboard</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/semantic.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/0.11.2/trix.css">
   <link rel="stylesheet" href="/dashboard/assets/stylesheets/dashboard.css">
 </head>
 <body>
   <nav class="ui sidebar inverted visible vertical menu">
-    <a href="/dashboard" class="item logo">
-      <img src="/dashboard/assets/images/logo.svg">
+    <a href="/dashboard" class="item">
+      <%- include('../logo.svg') %>
     </a>
 
     <div class="item">
@@ -40,8 +40,8 @@
   </nav>
 
   <main class="pusher">
-    <%- include('flash') %>
-    <%- include(yield) %>
+    <%- include('../flash') %>
+    <%- include(`../${yield}`) %>
   </main>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/0.11.2/trix.js"></script>
