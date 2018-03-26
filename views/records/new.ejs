@@ -1,6 +1,6 @@
 <h1 class="ui header"><%- title %></h1>
 
-<% if (group.fields) { %>
+<% if (group.hasFields) { %>
 <form class="ui form" action="<%- action %>" method="POST">
   <% for (let fieldName in group.fields) { %>
     <%- group.formField(fieldName) %>
