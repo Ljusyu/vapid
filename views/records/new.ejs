@@ -6,6 +6,7 @@
     <%- group.formField(fieldName) %>
   <% } %>
 
+  <input type="hidden" name="_csrf" value="<%- csrf %>">
   <input class="ui button" type="submit" value="Save">
 </form>
 <% } else { %>
