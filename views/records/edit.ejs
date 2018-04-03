@@ -1,6 +1,6 @@
 <h1 class="ui header"><%- title %></h1>
 
-<form class="ui form" action="<%- action %>" method="POST">
+<form class="ui form" action="<%- action %>" method="post" enctype="multipart/form-data">
   <% for (let fieldName in record.group.fields) { %>
     <%- record.group.formField(fieldName, record.content[fieldName]) %>
   <% } %>

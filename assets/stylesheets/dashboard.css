@@ -1,5 +1,7 @@
 .pusher {
-   padding: 1.5rem 3rem 3rem 18rem;
+  width: 100%;
+  max-width: 80rem;
+  padding: 1.5rem 3rem 3rem 18rem;
  }
 
 .sidebar .item:last-of-type:before {
@@ -9,15 +11,9 @@
 .sidebar .logo {
   margin: 0.5rem 2rem;
 }
-  .sidebar .logo:hover {
+  .sidebar .item:first-of-type:hover {
     background: transparent !important;
   }
-
-.ui.form,
-.ui.segment,
-.ui.table {
-  max-width: 60rem !important;
-}
 
   .ui.form .field > label {
     text-transform: capitalize;
@@ -25,6 +21,25 @@
 
   .ui.form .field > small {
     color: #666;
+  }
+
+
+.ui.form div.previewable {
+  padding: 1em;
+  border: 1px solid rgba(34,36,38,.15);
+  border-radius: 0.28571429rem;
+}
+
+  .ui.form div.previewable input:first-of-type {
+    padding: 0;
+    border: 0;
+  }
+
+  .ui.form div.previewable .preview {
+    display: block;
+    margin: 1rem 0;
+    max-width: 150px;
+    max-height: 150px;
   }
 
 main > .ui.clearing.segment {
