@@ -71,3 +71,16 @@ body.auth {
   body.auth .logo path {
     fill: #1b1c1d;
   }
+
+/* Error */
+body.error .vertical.segment {
+  padding: 1rem !important;
+}
+
+body.error .table {
+  max-width: 40rem;
+}
+
+  body.error .table td:first-of-type {
+    font-weight: bold;
+  }
