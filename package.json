@@ -1,7 +1,7 @@
 {
-  "name": "vapid-cli",
+  "name": "vapid-cms",
   "version": "0.1.0",
-  "description": "CLI for Vapid, a template-driven CMS.",
+  "description": "Vapid, a template-driven CMS.",
   "author": "Scott Robbin <scott@vapid.com>",
   "private": true,
   "bin": {
@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "bcrypt": "^1.0.3",
+    "boom": "^7.2.0",
     "colors": "^1.1.2",
     "commander": "^2.12.2",
     "ejs": "^2.5.7",
