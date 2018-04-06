@@ -2,7 +2,15 @@
   width: 100%;
   max-width: 80rem;
   padding: 1.5rem 3rem 3rem 18rem;
+}
+
+ main > .ui.clearing.segment {
+  padding-top: 0;
  }
+
+.hidden {
+  display: none !important;
+}
 
 .sidebar .item:last-of-type:before {
   display: none;
@@ -15,15 +23,7 @@
     background: transparent !important;
   }
 
-  .ui.form .field > label {
-    text-transform: capitalize;
-  }
-
-  .ui.form .field > small {
-    color: #666;
-  }
-
-
+/* Forms */
 .ui.form div.previewable {
   padding: 1em;
   border: 1px solid rgba(34,36,38,.15);
@@ -42,12 +42,18 @@
     max-height: 150px;
   }
 
-main > .ui.clearing.segment {
-  padding-top: 0;
+.ui.form .field > small {
+  color: #666;
 }
 
-.hidden {
-  display: none !important;
+.ui.form .field.error > small {
+  color: #9f3a38
+}
+
+.ui.form .field.error trix-editor,
+.ui.form .field.error .previewable {
+  background-color: #fff6f6;
+  border-color: #e0b4b4;
 }
 
 /* Auth */

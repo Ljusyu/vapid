@@ -3,7 +3,7 @@
 <% if (group.hasFields) { %>
 <form class="ui form" action="<%- action %>" method="post" enctype="multipart/form-data">
   <% for (let fieldName in group.fields) { %>
-    <%- group.formField(fieldName) %>
+    <%- group.formField(fieldName, record.content[fieldName], errors[fieldName]) %>
   <% } %>
 
   <input type="hidden" name="_csrf" value="<%- csrf %>">
