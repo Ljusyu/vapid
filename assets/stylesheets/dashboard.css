@@ -50,6 +50,15 @@
   color: #9f3a38
 }
 
+.ui.form .ui.checkbox {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.ui.form .ui.checkbox:after {
+  display: none;
+}
+
 .ui.form .field.error trix-editor,
 .ui.form .field.error .previewable {
   background-color: #fff6f6;
