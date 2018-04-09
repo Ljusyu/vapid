@@ -12,3 +12,5 @@ if ($editor) {
   $editor.style.height = "300px";
   $textarea.style.display = "none";
 }
+
+$('.ui.checkbox').checkbox()
