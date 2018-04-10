@@ -6,10 +6,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/0.11.2/trix.css">
   <link rel="stylesheet" href="/dashboard/assets/stylesheets/dashboard.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
 </head>
 <body>
-  <nav class="ui sidebar inverted visible vertical menu">
-    <a href="/dashboard" class="item">
+  <nav class="ui fixed inverted top menu">
+    <a class="icon item" data-toggle="sidebar">
+      <i class="content icon"></i>
+    </a>
+    <a href="/dashboard" class="item item-home item-nohover"></a>
+  </nav>
+
+  <nav class="ui fixed sidebar inverted vertical menu">
+    <a href="/dashboard" class="item item-home item-nohover">
       <%- include('../logo.svg') %>
     </a>
 
@@ -40,10 +50,12 @@
     </div>
   </nav>
 
-  <main class="pusher">
-    <%- include('../flash') %>
-    <%- include(`../${yield}`) %>
-  </main>
+  <div class="pusher">
+    <main>
+      <%- include('../flash') %>
+      <%- include(`../${yield}`) %>
+    </main>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
