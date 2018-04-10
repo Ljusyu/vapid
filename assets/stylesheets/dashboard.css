@@ -60,6 +60,7 @@
 }
 
 .ui.form .field.error trix-editor,
+.ui.form .field.error .ace_editor,
 .ui.form .field.error .previewable {
   background-color: #fff6f6;
   border-color: #e0b4b4;

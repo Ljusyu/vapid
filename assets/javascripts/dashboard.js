@@ -1,17 +1,19 @@
-var $editor = document.querySelector('#editor')
-var $textarea = document.querySelector('textarea[name^=content]')
-
-if ($editor) {
-  var editor = ace.edit('editor');
-  editor.getSession().setValue($textarea.value)
-
-  editor.getSession().on("change", function () {
-    $textarea.value = editor.getSession().getValue()
-  });
-
-  $editor.style.height = "300px";
-  $textarea.style.display = "none";
-}
-
+// Semantic UI
 $('.ui.checkbox').checkbox()
 $('.ui.dropdown').dropdown()
+
+// Ace Editor
+$('.ace_editor').each(function () {
+  var $editor = $(this)
+  var $textarea = $editor.next("textarea")
+
+  editor = ace.edit(this);
+  editor.getSession().setValue($textarea.val())
+
+  editor.getSession().on("change", function () {
+    $textarea.val( editor.getSession().getValue() )
+  })
+
+  $editor.height(300)
+  $textarea.hide()
+})
