@@ -35,9 +35,9 @@ program
 program
   .command('server')
   .description('start the server')
-  .action(actionHandler(site => {
+  .action(actionHandler(async site => {
     vapid.log.info(`Starting the ${vapid.env} server...`)
-    vapid.startServer()
+    await vapid.startServer()
     vapid.log.extra([
       `View your site at http://localhost:${vapid.server.port}`,
       'Ctrl + C to quit'

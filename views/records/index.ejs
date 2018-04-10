@@ -1,5 +1,5 @@
 <div class="ui vertical basic clearing segment">
-  <a href="./records/new" class="ui right floated small button">New <%- group.labelSingular %></a>
+  <a href="./records/new" class="ui right floated small button">New <%- section.labelSingular %></a>
 
   <h1 class="ui left floated header">
     <%- title %>
@@ -9,16 +9,16 @@
 <table class="ui striped table">
   <thead>
     <tr>
-      <% group.tableColumns.forEach(key => { %>
+      <% section.tableColumns.forEach(key => { %>
       <th><%- key %></th>
       <% }) %>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <% group.records.forEach(record => { %>
+    <% section.records.forEach(record => { %>
     <tr>
-      <% group.tableColumns.forEach(key => { %>
+      <% section.tableColumns.forEach(key => { %>
       <td><%- record.content[key.toLowerCase()] %></td>
       <% }) %>
       <td class="right aligned">

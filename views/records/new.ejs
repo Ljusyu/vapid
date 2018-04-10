@@ -1,15 +1,15 @@
 <h1 class="ui header"><%- title %></h1>
 
-<% if (group.hasFields) { %>
+<% if (section.hasFields) { %>
 <form class="ui form" action="<%- action %>" method="post" enctype="multipart/form-data">
-  <% for (let fieldName in group.fields) { %>
-    <%- group.formField(fieldName, record.content[fieldName], errors[fieldName]) %>
+  <% for (let fieldName in section.fields) { %>
+    <%- section.formField(fieldName, record.content[fieldName], errors[fieldName]) %>
   <% } %>
 
   <input type="hidden" name="_csrf" value="<%- csrf %>">
   <input class="ui button" type="submit" value="Save">
 </form>
 <% } else { %>
-  <p>This group has no fields.</p>
+  <p>This section has no fields.</p>
   <p><em>TODO: Explain how to add them in template.</em></p>
 <% } %>

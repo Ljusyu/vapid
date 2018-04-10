@@ -1,12 +1,12 @@
 <h1 class="ui header"><%- title %></h1>
 
 <form class="ui form" action="<%- action %>" method="post" enctype="multipart/form-data">
-  <% for (let fieldName in record.group.fields) { %>
-    <%- record.group.formField(fieldName, record.content[fieldName], errors[fieldName]) %>
+  <% for (let fieldName in record.section.fields) { %>
+    <%- record.section.formField(fieldName, record.content[fieldName], errors[fieldName]) %>
   <% } %>
 
   <div>
-    <% if (record.group.repeating) { %>
+    <% if (record.section.multiple) { %>
       <a href="./delete" class="ui right floated red button">Delete</a>
     <% } %>
     <input type="hidden" name="_csrf" value="<%- csrf %>">

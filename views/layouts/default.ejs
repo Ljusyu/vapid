@@ -16,10 +16,10 @@
     <div class="item">
       <div class="header">Content</div>
       <div class="menu">
-        <% allGroups.forEach(g => { %>
-          <a href="/dashboard/groups/<%- g.id %>" class="<% if (g.id == group.id) { %>active <% } %>item">
+        <% allSections.forEach(g => { %>
+          <a href="/dashboard/sections/<%- g.id %>" class="<% if (g.id == section.id) { %>active <% } %>item">
             <span>
-              <i class="<%- g.repeating ? 'list' : 'file outline' %> icon"></i>
+              <i class="<%- g.multiple ? 'list' : 'file outline' %> icon"></i>
               <%- g.label %>
             </span>
           </a>
