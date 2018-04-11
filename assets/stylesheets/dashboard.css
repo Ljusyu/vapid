@@ -127,7 +127,7 @@ body.error .table {
     padding: 1.5rem 3rem 3rem 18rem;
   }
 
-  main {
+  main .ui.form {
     max-width: 50rem;
   }
 
