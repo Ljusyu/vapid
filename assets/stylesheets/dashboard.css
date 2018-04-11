@@ -43,6 +43,15 @@
     flex: auto !important;
   }
 
+.ui.preview.table td:first-of-type {
+  min-width: 180px;
+}
+
+.ui.preview.table img {
+  width: auto;
+  height: 60px;
+}
+
 /* Forms */
 .ui.form div.previewable {
   padding: 1em;

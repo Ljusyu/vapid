@@ -6,7 +6,7 @@
   </h1>
 </div>
 
-<table class="ui striped table">
+<table class="ui striped preview table">
   <thead>
     <tr>
       <% section.tableColumns.forEach(key => { %>
@@ -19,7 +19,7 @@
     <% section.records.forEach(record => { %>
     <tr>
       <% section.tableColumns.forEach(key => { %>
-      <td><%- record.content[key.toLowerCase()] %></td>
+      <td><%- record.previewContent(key.toLowerCase(), section) %></td>
       <% }) %>
       <td class="right aligned">
         <a href="../../records/<%- record.id %>/edit">
