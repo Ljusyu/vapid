@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Vapid, a template-driven CMS.",
   "author": "Scott Robbin <scott@vapid.com>",
+  "private": true,
   "bin": {
     "vapid-cli": "./bin/cli.js"
   },
