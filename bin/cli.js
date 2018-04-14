@@ -8,6 +8,7 @@ const Vapid = require('../lib/vapid')
 
 function actionHandler(fn) {
   return (target) => {
+    target = target instanceof program.Command ? process.cwd() : target
     global.vapid = new Vapid(target)
 
     try {
@@ -35,7 +36,7 @@ program
 program
   .command('server')
   .description('start the server')
-  .action(actionHandler(async site => {
+  .action(actionHandler(async target => {
     vapid.log.info(`Starting the ${vapid.env} server...`)
     await vapid.startServer()
     vapid.log.extra([
@@ -48,11 +49,27 @@ program
 program
   .command('deploy')
   .description('deploy to Vapid\'s hosting service')
-  .action(actionHandler(site => {
-    vapid.log.extra([
-      `Vapid hosting is currently in private beta.`,
-      'To request access, visit https://www.vapid.com'
-    ]);
+  .action(actionHandler(target => {
+    let pjson = require(path.join(target, 'package.json'))
+    let deploy = pjson.scripts.deploy
+
+    vapid.log.info("Deploying...")
+    
+    if (deploy) {
+      require('child_process').exec(deploy, (err, stdout, stderr) => {
+        if (err) {
+          vapid.log.error(stderr)
+          return
+        }
+
+        vapid.log.extra(stdout)
+      })
+    } else {
+      vapid.log.extra([
+        `Vapid hosting is currently in private beta.`,
+        'To request access, visit https://www.vapid.com'
+      ]);
+    }
   }))
 
 // VERSION
