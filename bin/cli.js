@@ -39,7 +39,7 @@ program
     vapid.log.info(`Starting the ${vapid.env} server...`)
     await vapid.startServer()
     vapid.log.extra([
-      `View your site at http://localhost:${vapid.settings.port}`,
+      `View your site at http://localhost:${vapid.config.port}`,
       'Ctrl + C to quit'
     ]);
   }))
