@@ -39,9 +39,11 @@
     <div class="item">
       <div class="header">Settings</div>
       <div class="menu">
+        <% if (showBuild) { %>
         <a href="/dashboard/build" class="item">
           <span><i class="sync icon"></i> Build Site</span>
         </a>
+        <% } %>
         <a href="/dashboard/sign_out" class="item">
           <span><i class="sign out alternate icon"></i> Sign Out</span>
         </a>
