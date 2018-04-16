@@ -9,14 +9,20 @@ const vapid_modules = resolve(__dirname, 'node_modules')
 module.exports = {
   mode: mode,
   context: vapid_modules,
-  entry: [
-    resolve(vapid.site.paths.root, 'site.js'),
-    glob.sync(resolve(vapid.site.paths.root, '*.?(scss|sass)'))[0]
-  ],
+  entry: {
+    site: [
+      resolve(vapid.site.paths.root, 'site.js'),
+      glob.sync(resolve(vapid.site.paths.root, '*.?(scss|sass)'))[0]
+    ],
+    // dashboard: [
+    //   '../assets/javascripts/dashboard.js',
+    //   '../assets/stylesheets/dashboard.scss'
+    // ],
+  },
   output: {
     path: vapid.site.paths.public,
     publicPath: '/',
-    filename: 'site.js'
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -33,7 +39,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "site.css",
+      filename: '[name].css',
     })
   ],
   resolve: {
