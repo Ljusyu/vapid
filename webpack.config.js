@@ -1,35 +1,35 @@
-const glob = require('glob')
-const { resolve } = require('path')
+// TODO: How do is this handled in production? i.e. Hashed names, server routes
+const { sync } = require('glob')
+const { relative, resolve } = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const RemoveFilesPlugin = require('./lib/webpack/plugin')
 
-const mode = vapid.env == 'development' ? 'development' : 'production'
+const mode = vapid.env === 'development' ? 'development' : 'production'
 const site_modules = resolve(vapid.site.paths.root, 'node_modules')
 const vapid_modules = resolve(__dirname, 'node_modules')
 
+
 module.exports = {
   mode: mode,
-  context: vapid_modules,
+
   entry: {
-    site: [
-      resolve(vapid.site.paths.root, 'site.js'),
-      glob.sync(resolve(vapid.site.paths.root, '*.?(scss|sass)'))[0]
-    ],
-    // dashboard: [
-    //   '../assets/javascripts/dashboard.js',
-    //   '../assets/stylesheets/dashboard.scss'
-    // ],
+    'javascripts/site': sync(resolve(vapid.site.paths.www, 'javascripts/site.js')),
+    'stylesheets/site': sync(resolve(vapid.site.paths.www, 'stylesheets/site.?(scss|sass)')),
+    'dashboard/javascripts/dashboard': ['./assets/javascripts/dashboard.js'],
+    'dashboard/stylesheets/dashboard': ['./assets/stylesheets/dashboard.scss']
   },
+
   output: {
-    path: vapid.site.paths.public,
+    path: resolve(vapid.site.paths.data, '.webpack'),
     publicPath: '/',
     filename: '[name].js'
   },
+
   module: {
     rules: [
       {
         test:/\.(sass|scss)$/,
         use: [
-          { loader: 'css-hot-loader' },
           { loader: MiniCssExtractPlugin.loader },
           { loader: 'css-loader', options: { url: false } },
           { loader: 'sass-loader' }
@@ -37,11 +37,19 @@ module.exports = {
       }
     ]
   },
+
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].css',
+      filename: '[name].css'
+    }),
+    new RemoveFilesPlugin({
+      files: [
+        'stylesheets/site.js',
+        'dashboard/stylesheets/dashboard.js'
+      ]
     })
   ],
+
   resolve: {
     modules: [
       vapid_modules,

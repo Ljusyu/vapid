@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-const path = require('path')
+const dotenv = require('dotenv')
+const { resolve } = require('path')
 const program = require('commander')
 
 const pjson = require('../package.json')
@@ -8,8 +9,14 @@ const Vapid = require('../lib/vapid')
 
 function actionHandler(fn) {
   return (target) => {
+    let opts
+
+    dotenv.config({ path: resolve(target, '.env') })
+
     target = target instanceof program.Command ? process.cwd() : target
-    global.vapid = new Vapid(target)
+    opts = require(resolve(target, 'package.json')).vapid || {}
+
+    global.vapid = new Vapid(target, opts)
 
     try {
       fn(target)
@@ -50,8 +57,8 @@ program
   .command('deploy')
   .description('deploy to Vapid\'s hosting service')
   .action(actionHandler(target => {
-    let pjson = require(path.join(target, 'package.json'))
-    let deploy = pjson.scripts.deploy
+    let tjson = require(resolve(target, 'package.json'))
+    let deploy = tjson.scripts.deploy
 
     vapid.log.info("Deploying...")
     
