@@ -8,14 +8,13 @@ const pjson = require('../package.json')
 const Vapid = require('../lib/vapid')
 
 function actionHandler(fn) {
-  return (target) => {
+  return (target = process.cwd()) => {
     let opts
-
-    dotenv.config({ path: resolve(target, '.env') })
-
+    
     target = target instanceof program.Command ? process.cwd() : target
     opts = require(resolve(target, 'package.json')).vapid || {}
 
+    dotenv.config({ path: resolve(target, '.env') })
     global.vapid = new Vapid(target, opts)
 
     try {
