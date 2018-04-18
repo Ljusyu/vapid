@@ -10,7 +10,7 @@ const Vapid = require('../lib/vapid')
 function actionHandler(fn) {
   return (target = process.cwd()) => {
     let opts
-    
+
     target = target instanceof program.Command ? process.cwd() : target
     opts = require(resolve(target, 'package.json')).vapid || {}
 
@@ -28,7 +28,7 @@ function actionHandler(fn) {
 // NEW
 program
   .command('new <target>')
-  .description('create a new project')
+  .description('create a new site')
   .action(actionHandler(target => {
     vapid.initSite()
     vapid.log.info('Site created.')
