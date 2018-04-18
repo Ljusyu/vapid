@@ -4,23 +4,24 @@ const dotenv = require('dotenv')
 const { resolve } = require('path')
 const program = require('commander')
 
-const pjson = require('../package.json')
+const { version } = require('../package.json')
+const Logger = require('../lib/logger')
 const Vapid = require('../lib/vapid')
 
-function actionHandler(fn) {
-  return (target = process.cwd()) => {
+function actionHandler(fn, requirePJSON = true) {
+  return (target) => {
     let opts
 
-    target = target instanceof program.Command ? process.cwd() : target
-    opts = require(resolve(target, 'package.json')).vapid || {}
-
-    dotenv.config({ path: resolve(target, '.env') })
-    global.vapid = new Vapid(target, opts)
-
     try {
+      target = target instanceof program.Command ? process.cwd() : target
+      opts = requirePJSON && require(resolve(target, 'package.json')).vapid || {}
+
+      dotenv.config({ path: resolve(target, '.env') })
+      global.vapid = new Vapid(target, opts)
+
       fn(target)
     } catch (err) {
-      vapid.log.error(err)
+      Logger.error(err)
     }
   }
 }
@@ -34,9 +35,9 @@ program
     vapid.log.info('Site created.')
     vapid.log.extra([
       'To start the development server now, run:',
-      `  ${pjson.name} server ${target}`
+      `  vapid-cli server ${target}`
     ])
-  }))
+  }, false))
 
 // SERVER
 program
@@ -82,21 +83,21 @@ program
 program
   .command('version')
   .description('shows the version number')
-  .action(actionHandler(target => {
-    vapid.log.extra(`Vapid ${program.version()}`)
-  }))
+  .action(() => {
+    Logger.extra(`Vapid ${program.version()}`)
+  })
 
 // CATCH-ALL
 program
   .command('*', { noHelp: true })
-  .action(actionHandler(target => {
-    vapid.log.error(`Command "${process.argv[2]}" not found.`)
+  .action(() => {
+    Logger.error(`Command "${process.argv[2]}" not found.`)
     program.help()
-  }))
+  })
 
 if (process.argv.slice(2).length) {
   program
-    .version(pjson.version)
+    .version(version)
     .parse(process.argv)
 } else {
   program.help()

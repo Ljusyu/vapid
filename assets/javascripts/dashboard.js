@@ -1,6 +1,3 @@
-import $ from 'jquery'
-import 'trix'
-
 $(document).ready(function () {
   // Semantic UI
   $('.ui.checkbox').checkbox()
