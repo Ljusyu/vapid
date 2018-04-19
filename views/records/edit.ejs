@@ -1,8 +1,8 @@
 <h1 class="ui header"><%- title %></h1>
 
-<form class="ui form" action="<%- action %>" method="post" enctype="multipart/form-data">
+<form class="ui form" action="<%- action %>" method="post" enctype="multipart/form-data" novalidate>
   <% for (let fieldName in record.section.fields) { %>
-    <%- record.section.formField(fieldName, record.content[fieldName], errors[fieldName]) %>
+    <%- record.section.formField(fieldName, record.section.fields[fieldName], record.content[fieldName], errors[fieldName]) %>
   <% } %>
 
   <div>

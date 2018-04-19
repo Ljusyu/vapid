@@ -1,15 +1,7 @@
 <h1 class="ui header"><%- title %></h1>
 
-<% if (section.hasFields) { %>
-<form class="ui form" action="<%- action %>" method="post" enctype="multipart/form-data">
-  <% for (let fieldName in section.fields) { %>
-    <%- section.formField(fieldName, record.content[fieldName], errors[fieldName]) %>
-  <% } %>
+<%- include(`_form_${form}`) %>
 
-  <input type="hidden" name="_csrf" value="<%- csrf %>">
-  <input class="ui button" type="submit" value="Save">
-</form>
-<% } else { %>
-  <p>This section has no fields.</p>
-  <p><em>TODO: Explain how to add them in template.</em></p>
+<% if (form == 'email') { %>
+  <p><em>Note: This preview form is styled using Semantic UI, and may not resemble the one rendered on your site.</em></p>
 <% } %>

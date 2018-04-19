@@ -2,8 +2,8 @@
 <html>
 <head>
   <title><%- title %> | Vapid Dashboard</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/0.11.2/trix.css">
+  <link rel="stylesheet" href="/dashboard/vendor/semantic-ui/semantic.min.css">
+  <link rel="stylesheet" href="/dashboard/vendor/trix/trix.css">
   <link rel="stylesheet" href="/dashboard/stylesheets/dashboard.css">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -25,16 +25,32 @@
     <div class="item">
       <div class="header">Content</div>
       <div class="menu">
-        <% allSections.forEach(g => { %>
-          <a href="/dashboard/sections/<%- g.id %>" class="<% if (g.id == section.id) { %>active <% } %>item">
+        <% contentSections.forEach(s => { %>
+          <a href="/dashboard/sections/<%- s.id %>" class="<% if (s.id == section.id) { %>active <% } %>item">
             <span>
-              <i class="<%- g.multiple ? 'list' : 'file outline' %> icon"></i>
-              <%- g.label %>
+              <i class="<%- s.multiple ? 'list' : 'file outline' %> icon"></i>
+              <%- s.label %>
             </span>
           </a>
         <% }) %>
       </div>
     </div>
+
+    <% if (formSections.length) { %>
+    <div class="item">
+      <div class="header">Forms</div>
+      <div class="menu">
+        <% formSections.forEach(s => { %>
+          <a href="/dashboard/sections/<%- s.id %>" class="<% if (s.id == section.id) { %>active <% } %>item">
+            <span>
+              <i class="envelope outline icon"></i>
+              <%- s.label %>
+            </span>
+          </a>
+        <% }) %>
+      </div>
+    </div>
+    <% } %>
 
     <div class="item">
       <div class="header">Settings</div>
@@ -58,10 +74,10 @@
     </main>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/0.11.2/trix.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.1/ace.js"></script>
+  <script src="/dashboard/vendor/jquery.min.js"></script>
+  <script src="/dashboard/vendor/semantic-ui/semantic.min.js"></script>
+  <script src="/dashboard/vendor/trix/trix.js"></script>
+  <script src="/dashboard/vendor/ace.min.js"></script>
   <script src="/dashboard/javascripts/dashboard.js"></script>
 </body>
 </html>
