@@ -2,27 +2,16 @@
   "name": "vapid-cms",
   "version": "0.1.0",
   "description": "Vapid, a template-driven CMS.",
+  "license": "MIT",
+  "repository": "vapid/vapid-cms",
   "author": "Scott Robbin <scott@vapid.com>",
-  "private": true,
   "bin": {
-    "vapid-cli": "./bin/cli.js"
+    "vapid": "./bin/cli.js"
   },
-  "scripts": {
-    "build": "pkg bin/vapid -c package.json -o dist/vapid",
-    "test": "./node_modules/.bin/mocha"
-  },
-  "pkg": {
-    "targets": [
-      "node8-alpine-x64",
-      "node8-linux-x64",
-      "node8-macos-x64",
-      "node8-win-x64"
-    ]
-  },
+  "scripts": {},
   "dependencies": {
     "bcrypt": "^1.0.3",
     "boom": "^7.2.0",
-    "chokidar": "^2.0.3",
     "colors": "^1.1.2",
     "commander": "^2.12.2",
     "css-loader": "^0.28.11",
@@ -60,12 +49,9 @@
     "style-loader": "^0.20.3",
     "umzug": "^2.1.0",
     "unfurl.js": "^1.1.6",
-    "webpack": "^4.5.0",
-    "ws": "^5.1.1"
+    "webpack": "^4.5.0"
   },
   "devDependencies": {
-    "chai": "^4.1.2",
-    "mocha": "^4.0.1",
     "nodemon": "^1.17.3"
   }
 }
