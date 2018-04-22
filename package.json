@@ -1,14 +1,19 @@
 {
   "name": "vapid-cms",
   "version": "0.1.0",
-  "description": "Vapid, a template-driven CMS.",
   "license": "MIT",
-  "repository": "vapid/vapid-cms",
+  "description": "Vapid, a template-driven CMS.",
+  "repository": "vapid/vapid",
   "author": "Scott Robbin <scott@vapid.com>",
   "bin": {
     "vapid": "./bin/cli.js"
   },
-  "scripts": {},
+  "scripts": {
+  },
+  "keywords": [],
+  "nodemonConfig": {
+    "ignore": ["assets/*"]
+  },
   "dependencies": {
     "bcrypt": "^1.0.3",
     "boom": "^7.2.0",
