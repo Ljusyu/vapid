@@ -11,8 +11,8 @@ $(document).ready(function () {
 
   // Ace Editor
   $('.ace_editor').each(function () {
-    var $editor = $(this)
-    var $textarea = $editor.next("textarea")
+    const $editor = $(this)
+    const $textarea = $editor.next("textarea")
 
     editor = ace.edit(this);
     editor.getSession().setValue($textarea.val())
@@ -24,4 +24,18 @@ $(document).ready(function () {
     $editor.height(300)
     $textarea.hide()
   })
+
+  // Hide messages
+  $(".ui.form").submit(function () {
+    $(".ui.message").hide()
+  })
+
+  // WebSocket listener
+  if ("WebSocket" in window) {
+    const ws = new WebSocket("ws://localhost:3000/livereload")
+
+    ws.onmessage = (evt) => {
+      console.log(JSON.parse(evt.data))
+    } 
+  }
 })

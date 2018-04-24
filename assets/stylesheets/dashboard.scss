@@ -11,6 +11,10 @@
   width: 100%;
   padding: 4.5rem 1.5rem 1.5rem;
 
+  .hidden.message + .ui.header {
+    margin-top: -.14285714em;
+  }
+
   @include desktop {
     padding: 1.5rem 3rem 3rem 18rem;
   }
@@ -34,4 +38,10 @@ main {
 
 .item-nohover:hover {
   background: transparent !important;
+}
+
+.icon.message a {
+  color: inherit;
+  font-weight: bold;
+  text-decoration: underline;
 }

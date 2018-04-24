@@ -70,6 +70,14 @@
   <div class="pusher">
     <main>
       <%- include('../flash') %>
+
+      <div class="ui build warning icon message <% if (!needsBuild) { %>hidden<% } %>">
+        <i class="sync icon"></i>
+        <div class="content">
+          Your site templates have changed. Please <a href="/dashboard/build">rebuild now</a> to update the dashboard.
+        </div>
+      </div>
+
       <%- include(`../${yield}`) %>
     </main>
   </div>
