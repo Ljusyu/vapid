@@ -1,0 +1,10 @@
+{
+  "extends": "airbnb-base",
+  "rules": {
+    "no-underscore-dangle": "off",
+    "no-use-before-define": "off",
+    "spaced-comment": "off",
+    "--remove-below-once-global-vapid-is-fixed--": "",
+    "no-undef": "off"
+  },
+}
