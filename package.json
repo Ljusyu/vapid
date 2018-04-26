@@ -9,9 +9,22 @@
     "vapid": "./bin/cli.js"
   },
   "scripts": {
-    "lint": "eslint lib bin"
+    "lint": "eslint bin lib tests",
+    "test": "jest"
   },
-  "keywords": [],
+  "keywords": [
+    "app",
+    "cms",
+    "framework",
+    "web"
+  ],
+  "jest": {
+    "testMatch": [
+      "**/tests/*.js"
+    ],
+    "bail": true,
+    "testEnvironment": "node"
+  },
   "nodemonConfig": {
     "ignore": [
       "assets/*"
@@ -65,6 +78,8 @@
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.11.0",
-    "nodemon": "^1.17.3"
+    "jest": "^22.4.3",
+    "nodemon": "^1.17.3",
+    "supertest": "^3.0.0"
   }
 }
