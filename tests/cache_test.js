@@ -1,4 +1,5 @@
-const cache = require('../lib/cache');
+const Cache = require('../lib/cache');
+const cache = new Cache();
 
 describe('#clearPrefix', () => {
   test('clears keys with prefix only', () => {
