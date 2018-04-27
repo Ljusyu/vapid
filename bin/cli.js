@@ -40,7 +40,7 @@ program
     Logger.info('Site created.');
     Logger.extra([
       'To start the development server now, run:',
-      `  vapid-cli server ${target}`,
+      `  vapid server ${target}`,
     ]);
   }, false));
 
@@ -96,9 +96,9 @@ program
  */
 program
   .command('version')
-  .description('shows the version number')
+  .description('show the version number')
   .action(() => {
-    Logger.extra(`Vapid ${program.version()}`);
+    Logger.extra(`Vapid ${version}`);
   });
 
 /**
@@ -112,9 +112,7 @@ program
   });
 
 if (process.argv.slice(2).length) {
-  program
-    .version(version)
-    .parse(process.argv);
+  program.parse(process.argv);
 } else {
   program.help();
 }
