@@ -23,15 +23,18 @@ function actionHandler(fn, requirePJSON = true) {
 
       fn(target);
     } catch (err) {
-      Logger.error(err);
+      Logger.error(err.message);
     }
   };
 }
 
-// NEW
+/**
+ * new - copies the generator files to target directory
+ * @param {string} target
+ */
 program
   .command('new <target>')
-  .description('create a new site')
+  .description('create a new website')
   .action(actionHandler((target) => {
     vapid.initSite();
     vapid.log.info('Site created.');
@@ -41,7 +44,10 @@ program
     ]);
   }, false));
 
-// SERVER
+/**
+ * server - runs the web server
+ * @param {string} [target='.']
+ */
 program
   .command('server')
   .description('start the server')
@@ -54,7 +60,10 @@ program
     ]);
   }));
 
-// DEPLOY
+/**
+ * deploy - publishes the website to the hosting platform
+ * @param {string} [target='.']
+ */
 program
   .command('deploy')
   .description('deploy to Vapid\'s hosting service')
@@ -82,7 +91,9 @@ program
     }
   }));
 
-// VERSION
+/**
+ * version - prints the current Vapid version number
+ */
 program
   .command('version')
   .description('shows the version number')
@@ -90,7 +101,9 @@ program
     Logger.extra(`Vapid ${program.version()}`);
   });
 
-// CATCH-ALL
+/**
+ * catch all command - shows the help text
+ */
 program
   .command('*', { noHelp: true })
   .action(() => {

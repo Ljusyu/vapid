@@ -1,10 +1,12 @@
 const cache = require('../lib/cache');
 
-test('#clearPrefix', () => {
-  cache.put('a-1', 1);
-  cache.put('a-2', 1);
-  cache.put('b-1', 1);
-  cache.clearPrefix('a-');
+describe('#clearPrefix', () => {
+  test('clears keys with prefix only', () => {
+    cache.put('a-1', 1);
+    cache.put('a-2', 1);
+    cache.put('b-1', 1);
+    cache.clearPrefix('a-');
 
-  expect(cache.keys()).toEqual(['b-1']);
+    expect(cache.keys()).toEqual(['b-1']);
+  });
 });
