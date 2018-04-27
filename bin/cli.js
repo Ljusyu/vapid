@@ -37,8 +37,8 @@ program
   .description('create a new website')
   .action(actionHandler((target) => {
     vapid.initSite();
-    vapid.log.info('Site created.');
-    vapid.log.extra([
+    Logger.info('Site created.');
+    Logger.extra([
       'To start the development server now, run:',
       `  vapid-cli server ${target}`,
     ]);
@@ -52,9 +52,9 @@ program
   .command('server')
   .description('start the server')
   .action(actionHandler(async () => {
-    vapid.log.info(`Starting the ${vapid.env} server...`);
+    Logger.info(`Starting the ${vapid.env} server...`);
     await vapid.startServer();
-    vapid.log.extra([
+    Logger.extra([
       `View your site at http://localhost:${vapid.config.port}`,
       'Ctrl + C to quit',
     ]);
@@ -72,19 +72,19 @@ program
     const tjson = require(resolve(target, 'package.json'));
     const { deploy } = tjson.scripts;
 
-    vapid.log.info('Deploying...');
+    Logger.info('Deploying...');
 
     if (deploy) {
       childProcess.exec(deploy, (err, stdout, stderr) => {
         if (err) {
-          vapid.log.error(stderr);
+          Logger.error(stderr);
           return;
         }
 
-        vapid.log.extra(stdout);
+        Logger.extra(stdout);
       });
     } else {
-      vapid.log.extra([
+      Logger.extra([
         'Vapid hosting is currently in private beta.',
         'To request access, visit https://www.vapid.com',
       ]);

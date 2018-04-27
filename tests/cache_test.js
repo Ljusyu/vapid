@@ -1,4 +1,5 @@
 const Cache = require('../lib/cache');
+
 const cache = new Cache();
 
 describe('#clearPrefix', () => {
