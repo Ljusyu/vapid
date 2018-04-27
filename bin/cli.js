@@ -95,11 +95,7 @@ program
  * version - prints the current Vapid version number
  */
 program
-  .command('version')
-  .description('show the version number')
-  .action(() => {
-    Logger.extra(`Vapid ${version}`);
-  });
+  .version(`Vapid ${version}`, '-v, --version');
 
 /**
  * catch all command - shows the help text
@@ -111,6 +107,9 @@ program
     program.help();
   });
 
+/*
+ * Read args, or show help
+ */
 if (process.argv.slice(2).length) {
   program.parse(process.argv);
 } else {

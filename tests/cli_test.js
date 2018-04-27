@@ -52,7 +52,6 @@ describe('new', () => {
  */
 describe('server', () => {
   test.skip('starts the web server', () => {
-
   });
 });
 
@@ -61,11 +60,9 @@ describe('server', () => {
  */
 describe('deploy', () => {
   test.skip('deploys to the website host', () => {
-
   });
 
   test.skip('allows overriding via package.json', () => {
-
   });
 });
 
@@ -74,7 +71,8 @@ describe('deploy', () => {
  */
 describe('version', () => {
   test('prints the version number', () => {
-    expect(cmd('version')).toEqual(`Vapid ${version}\n`);
+    expect(cmd('-v')).toEqual(`Vapid ${version}\n`);
+    expect(cmd('--version')).toEqual(`Vapid ${version}\n`);
   });
 });
 
@@ -83,6 +81,7 @@ describe('version', () => {
  */
 describe('help', () => {
   test('if called explicitly', () => {
+    expect(cmd('-h')).toMatch(/Usage: /);
     expect(cmd('--help')).toMatch(/Usage: /);
   });
 
