@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-const dotenv = require('dotenv');
 const { resolve } = require('path');
 const program = require('commander');
 const childProcess = require('child_process');
@@ -10,19 +9,12 @@ const Generator = require('../lib/generator');
 const Logger = require('../lib/logger');
 const Vapid = require('../lib/vapid');
 
-function actionHandler(fn, requirePJSON = true) {
-  return (cwd) => {
-    let opts;
-
+function withVapid(fn) {
+  return (target) => {
     try {
-      const target = cwd instanceof program.Command ? process.cwd() : cwd;
-      /* eslint-disable-next-line global-require, import/no-dynamic-require */
-      opts = (requirePJSON && require(resolve(target, 'package.json')).vapid) || {};
-
-      dotenv.config({ path: resolve(target, '.env') });
-      global.vapid = new Vapid(target, opts);
-
-      fn(target);
+      const cwd = target instanceof program.Command ? process.cwd() : target;
+      const vapid = new Vapid(cwd);
+      fn(vapid);
     } catch (err) {
       Logger.error(err.message);
     }
@@ -36,26 +28,26 @@ function actionHandler(fn, requirePJSON = true) {
 program
   .command('new <target>')
   .description('create a new website')
-  .action(actionHandler((target) => {
+  .action((target) => {
     Generator.copyTo(target);
 
     Logger.info('Site created.');
     Logger.extra([
-      'To start the development server now, run:',
+      'To start the server now, run:',
       `  vapid server ${target}`,
     ]);
-  }, false));
+  });
 
 /**
- * server - runs the web server
+ * start - runs the web server
  * @param {string} [target='.']
  */
 program
-  .command('server')
+  .command('start')
   .description('start the server')
-  .action(actionHandler(async () => {
+  .action(withVapid(async (vapid) => {
     Logger.info(`Starting the ${vapid.env} server...`);
-    await vapid.startServer();
+    await vapid.start();
     Logger.extra([
       `View your site at http://localhost:${vapid.config.port}`,
       'Ctrl + C to quit',
@@ -69,9 +61,9 @@ program
 program
   .command('deploy')
   .description('deploy to Vapid\'s hosting service')
-  .action(actionHandler((target) => {
+  .action(withVapid((vapid) => {
     /* eslint-disable-next-line global-require, import/no-dynamic-require */
-    const tjson = require(resolve(target, 'package.json'));
+    const tjson = require(resolve(vapid.cwd, 'package.json'));
     const { deploy } = tjson.scripts;
 
     Logger.info('Deploying...');

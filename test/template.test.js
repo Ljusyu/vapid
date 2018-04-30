@@ -7,7 +7,7 @@ const Template = require('../lib/template');
  */
 describe('.fromFile', () => {
   test('creates new instance from a file path', () => {
-    const filePath = resolve(__dirname, 'files/basic.html');
+    const filePath = resolve(__dirname, 'fixtures/basic.html');
     const template = Template.fromFile(filePath);
     const html = readFileSync(filePath, 'utf-8');
 

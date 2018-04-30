@@ -9,7 +9,7 @@
     "vapid": "./bin/cli.js"
   },
   "scripts": {
-    "lint": "eslint bin lib tests",
+    "lint": "eslint bin lib test",
     "test": "jest"
   },
   "keywords": [
@@ -20,7 +20,7 @@
   ],
   "jest": {
     "testMatch": [
-      "**/tests/*.js"
+      "<rootDir>/test/**.test.js"
     ],
     "bail": true,
     "testEnvironment": "node"
