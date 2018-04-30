@@ -6,6 +6,7 @@ const program = require('commander');
 const childProcess = require('child_process');
 
 const { version } = require('../package.json');
+const Generator = require('../lib/generator');
 const Logger = require('../lib/logger');
 const Vapid = require('../lib/vapid');
 
@@ -36,7 +37,8 @@ program
   .command('new <target>')
   .description('create a new website')
   .action(actionHandler((target) => {
-    vapid.initSite();
+    Generator.copyTo(target);
+
     Logger.info('Site created.');
     Logger.extra([
       'To start the development server now, run:',

@@ -1,7 +1,6 @@
 const { execSync } = require('child_process');
 const { join } = require('path');
 const fs = require('fs');
-const tmp = require('tmp');
 const { version } = require('../package.json');
 
 const bin = join(__dirname, '../bin/cli.js');
