@@ -13,7 +13,7 @@ describe('.copyTo', () => {
   });
 
   afterAll(() => {
-    _removeTarget();
+    _removeTarget(target);
   });
 
   test('generates a secret key', () => {
@@ -30,15 +30,15 @@ describe('.copyTo', () => {
   });
 });
 
-function _removeTarget() {
-  fs.readdirSync(target).forEach((file) => {
-    const path = join(target, file);
-    if (fs.lstatSync(curPath).isDirectory()) {
-      removeDir(path);
+function _removeTarget(path) {
+  fs.readdirSync(path).forEach((file) => {
+    const filePath = join(path, file);
+    if (fs.lstatSync(filePath).isDirectory()) {
+      _removeTarget(filePath);
     } else {
       fs.unlinkSync(path);
     }
   });
 
-  fs.rmdirSync(target);
+  fs.rmdirSync(path);
 }

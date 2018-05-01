@@ -4,6 +4,7 @@ const Koa = require('koa');
 
 let app;
 let server;
+let request;
 
 beforeEach((done) => {
   app = new Koa();

@@ -1,9 +1,11 @@
 {
   "extends": "airbnb-base",
+  "plugins": ["jest"],
   "rules": {
     "no-underscore-dangle": "off",
-    "no-use-before-define": "off",
-    "--remove-below-once-global-vapid-is-fixed--": "",
-    "no-undef": "off"
+    "no-use-before-define": "off"
   },
+  "env": {
+    "jest/globals": true
+  }
 }
