@@ -34,7 +34,7 @@ program
     Logger.info('Site created.');
     Logger.extra([
       'To start the server now, run:',
-      `  vapid server ${target}`,
+      `  vapid start ${target}`,
     ]);
   });
 
