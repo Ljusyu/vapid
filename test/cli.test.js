@@ -1,3 +1,5 @@
+// TODO: Remove execSync, and test Commander directly
+// Also, test other commands
 const { execSync } = require('child_process');
 const { join } = require('path');
 const { version } = require('../package.json');
