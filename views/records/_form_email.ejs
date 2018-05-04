@@ -1,6 +1,6 @@
 <form class="ui form" action="https://formspree.io/<%- recipient %>" method="post">
   <% for (let fieldName in fields) { %>
-    <%- section.formField(fieldName, fields[fieldName]) %>
+    <%- Form.field(fieldName, fields[fieldName]) %>
   <% } %>
   <input type="hidden" name="_subject" value="<%- subject %>" />
   <input type="hidden" name="_next" value="<%- next %>" />
