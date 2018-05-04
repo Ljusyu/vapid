@@ -56,6 +56,11 @@ describe('#parse', () => {
     expect(mixed).toMatchSnapshot();
   });
   /* eslint-enable quotes */
+
+  test('parses order by clause', () => {
+    const orderBy = new Template('{{#section offices order=city,-name}}{{/section}}').parse();
+    expect(orderBy).toMatchSnapshot();
+  });
 });
 
 /*
