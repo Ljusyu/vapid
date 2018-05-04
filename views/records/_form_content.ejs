@@ -1,7 +1,7 @@
 <% if (section.hasFields) { %>
 <form class="ui form" action="<%- action %>" method="post" enctype="multipart/form-data" novalidate>
   <% for (let fieldName in section.fields) { %>
-    <%- section.formField(fieldName, section.fields[fieldName], record.content[fieldName], errors[fieldName]) %>
+    <%- section.formField(`content[${fieldName}]`, section.fields[fieldName], record.content[fieldName], errors[fieldName]) %>
   <% } %>
 
   <input type="hidden" name="_csrf" value="<%- csrf %>">
