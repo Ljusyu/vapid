@@ -23,6 +23,7 @@ function withVapid(fn) {
 
 /**
  * new - copies the generator files to target directory
+ *
  * @param {string} target
  */
 program
@@ -40,6 +41,7 @@ program
 
 /**
  * start - runs the web server
+ *
  * @param {string} [target='.']
  */
 program
@@ -56,6 +58,7 @@ program
 
 /**
  * deploy - publishes the website to the hosting platform
+ *
  * @param {string} [target='.']
  */
 program
@@ -101,7 +104,7 @@ program
     program.help();
   });
 
-/*
+/**
  * Read args, or show help
  */
 if (process.argv.slice(2).length) {
