@@ -644,7 +644,7 @@
                 liveCSS: (_ref = options.apply_css_live) != null ? _ref : true,
               });
             }
-            message = this._parseMessage(data, ['reload', 'alert']);
+            message = this._parseMessage(data, ['reload', 'alert', 'dirty']);
             return this.handlers.message(message);
           } catch (_error) {
             e = _error;
