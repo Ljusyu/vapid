@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-const { resolve } = require('path');
 const program = require('commander');
-const childProcess = require('child_process');
+const inquirer = require('inquirer');
 
 const { version } = require('../package.json');
+const Deployer = require('../lib/deployer');
 const Generator = require('../lib/generator');
 const Logger = require('../lib/logger');
 const Vapid = require('../lib/vapid');
@@ -64,28 +64,29 @@ program
 program
   .command('deploy')
   .description('deploy to Vapid\'s hosting service')
-  .action(withVapid((vapid) => {
-    /* eslint-disable-next-line global-require, import/no-dynamic-require */
-    const tjson = require(resolve(vapid.cwd, 'package.json'));
-    const { deploy } = tjson.scripts;
+  .action(withVapid(async (vapid) => {
+    const deployer = new Deployer(vapid.paths.root);
 
-    Logger.info('Deploying...');
+    if (!deployer.loggedIn) {
+      Logger.info("Please enter your Vapid credentials, or visit vapid.com to signup.")
+      const input = await inquirer.prompt([
+        {
+          type: 'input',
+          name: 'email',
+          message: 'Email:'
+        },
 
-    if (deploy) {
-      childProcess.exec(deploy, (err, stdout, stderr) => {
-        if (err) {
-          Logger.error(stderr);
-          return;
+        {
+          type: 'password',
+          name: 'password',
+          message: 'Password:'
         }
-
-        Logger.extra(stdout);
-      });
-    } else {
-      Logger.extra([
-        'Vapid hosting is currently in private beta.',
-        'To request access, visit https://www.vapid.com',
       ]);
+      deployer.login(input.email, input.password);
     }
+
+    // Not sure why this isn't exiting naturally
+    process.exit(0);
   }));
 
 /**

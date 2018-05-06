@@ -39,6 +39,7 @@
     "dotenv": "^5.0.1",
     "ejs": "^2.5.7",
     "glob": "^7.1.2",
+    "inquirer": "^5.2.0",
     "koa": "^2.4.1",
     "koa-better-flash": "^0.0.3",
     "koa-bodyparser": "^4.2.0",
@@ -60,6 +61,7 @@
     "memory-cache": "^0.2.0",
     "mini-css-extract-plugin": "^0.4.0",
     "mkdirp": "^0.5.1",
+    "netrc": "^0.1.4",
     "node-sass": "^4.8.3",
     "passport-local": "^1.0.0",
     "pluralize": "^7.0.0",
@@ -72,7 +74,8 @@
     "style-loader": "^0.20.3",
     "umzug": "^2.1.0",
     "unfurl.js": "^1.1.6",
-    "webpack": "^4.5.0"
+    "webpack": "^4.5.0",
+    "write-pkg": "^3.1.0"
   },
   "devDependencies": {
     "eslint": "^4.19.1",
